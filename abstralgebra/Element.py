@@ -27,7 +27,6 @@ class Element:
             neg = True
             power = abs(power)
 
-        print(power, neg)
         result = self
         for _ in range(1, power):
             result = self * result
@@ -46,7 +45,7 @@ class Element:
     """
         Logical operations
     """
-    
+
     def __eq__(self, value):
         if isinstance(value, Element):
             return self.value == value.value
