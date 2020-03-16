@@ -13,6 +13,13 @@ class Group(ABC):
     @abstractproperty
     def elements(self):
         return []
+    
+    @abstractproperty
+    def eye(self):
+        pass
+
+    def __len__(self):
+        return len(self.elements)
 
     def cartesianProduct(self, group):
         product = []
@@ -21,3 +28,5 @@ class Group(ABC):
                 product.append((i, j))
 
         return product
+
+    __mul__ = cartesianProduct

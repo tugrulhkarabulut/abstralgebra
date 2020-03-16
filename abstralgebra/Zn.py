@@ -9,6 +9,8 @@ from .Group import Group
 
 
 class Zn(Group):
+    eye = 0
+
     def __init__(self, n):
         self.n = n
 
@@ -17,7 +19,7 @@ class Zn(Group):
 
     # Zn is a group under addition
     def op(self, x, y):
-        return x + y
+        return self.mod(x + y)
 
     @property
     # Returns all elements of els
@@ -57,3 +59,9 @@ class Zn(Group):
         if sorted is True:
             generatedGroup.sort()
         return generatedGroup
+
+    def __repr__(self):
+        return "Zn({})".format(self.n)
+
+    def __str__(self):
+        return "Z/{}".format(self.n)

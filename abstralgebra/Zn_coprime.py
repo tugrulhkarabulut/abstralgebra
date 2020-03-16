@@ -8,6 +8,8 @@ from .Group import Group
 
 
 class Zn_coprime(Group):
+    eye = 1
+
     def __init__(self, n):
         self.n = n
 
@@ -25,7 +27,7 @@ class Zn_coprime(Group):
 
     # Zn* is a group under multiplication
     def op(self, x, y):
-        return x * y
+        return self.mod(x * y)
 
     def generateSubgroupBy(self, k, sorted=False, convertMod=False):
         if convertMod is True:
@@ -45,3 +47,9 @@ class Zn_coprime(Group):
         if sorted is True:
             generatedGroup.sort()
         return generatedGroup
+
+    def __repr__(self):
+        return "Zn*({})".format(self.n)
+
+    def __str__(self):
+        return "Z*/{}".format(self.n)
