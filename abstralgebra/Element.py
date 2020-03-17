@@ -16,6 +16,12 @@ class Element:
         if isinstance(other, Element):
             other = other.value
         return Element(self.group.op(self.value, other), self.group)
+    
+    def __imul__(self, other):
+        if isinstance(other, Element):
+            other = other.value
+        self = self * other
+        return self
 
     def __pow__(self, power):
         neg = False
@@ -33,7 +39,8 @@ class Element:
 
         if neg is True:
             result = ~result
-        return Element(result, self.group)
+        
+        return result
 
     def __invert__(self):
         inverse = None
@@ -50,6 +57,31 @@ class Element:
         if isinstance(value, Element):
             return self.value == value.value
         return self.value == value
+    
+    def __lt__(self, value):
+        if isinstance(value, Element):
+            return self.value < value.value
+        return self.value < value
+    
+    def __gt__(self, value):
+        if isinstance(value, Element):
+            return self.value > value.value
+        return self.value > value
+    
+    def __le__(self, value):
+        if isinstance(value, Element):
+            return self.value <= value.value
+        return self.value <= value
+    
+    def __ge__(self, value):
+        if isinstance(value, Element):
+            return self.value >= value.value
+        return self.value >= value
+    
+    def __ne__(self, value):
+        if isinstance(value, Element):
+            return self.value != value.value
+        return self.value != value
 
     def __repr__(self):
         return "Element({}, {})".format(self.value, str(self.group))
