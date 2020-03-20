@@ -83,6 +83,11 @@ class Element:
             return self.value != value.value
         return self.value != value
 
+    
+    """
+        String conversions
+    """
+
     def __repr__(self):
         return "Element({}, {})".format(self.value, str(self.group))
 
