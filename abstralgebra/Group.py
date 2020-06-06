@@ -31,6 +31,5 @@ class Group(ABC):
 
     __mul__ = cartesianProduct
 
-
     def __getitem__(self, index):
         return self.elements[index]

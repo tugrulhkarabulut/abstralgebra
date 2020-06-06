@@ -47,6 +47,7 @@ class Element:
         for el in self.group.elements:
             if self * el == self.group.eye:
                 inverse = el
+                break
         return inverse
 
     """

@@ -4,6 +4,7 @@ import pathlib
 from .Group import Group
 from .Zn import Zn
 from .Zn_coprime import Zn_coprime
+from .Klein4 import Klein4
 from .Element import Element
 from .order import O
 
