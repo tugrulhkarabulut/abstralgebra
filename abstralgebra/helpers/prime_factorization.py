@@ -1,6 +1,7 @@
 from find_primes_up_to import find_primes_up_to
 
 from math import sqrt, log, floor
+from functools import reduce
 
 def prime_factorization(n):
     """
@@ -15,10 +16,17 @@ def prime_factorization(n):
     """
     
     primes_up_to_n_2 = find_primes_up_to(floor(n/2))
+
     factorization = []
+    current_num = 1
     for p in primes_up_to_n_2:
+        if current_num >= n:
+            break
+        
         if n % p == 0:
-            factorization.append((p, log_simple(n, p)))
+            factor = (p, log_simple(n, p))
+            current_num *= factor[0] ** factor[1]
+            factorization.append(factor)
     
     if len(factorization) == 0:
         factorization.append((n, 1))

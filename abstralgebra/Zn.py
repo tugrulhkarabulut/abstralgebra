@@ -1,5 +1,6 @@
 from math import gcd
 from .Group import Group
+from .Element import Element
 
 """
     Z/n is a group under addition.
@@ -9,10 +10,9 @@ from .Group import Group
 
 
 class Zn(Group):
-    eye = 0
-
     def __init__(self, n):
         self.n = n
+        super().__init__(elements=list(range(self.n)), eye=0)
 
     def mod(self, k):
         return k % self.n
@@ -21,13 +21,10 @@ class Zn(Group):
     def op(self, x, y):
         return self.mod(x + y)
 
-    @property
-    # Returns all elements of els
-    def elements(self):
-        return list(range(self.n))
-
     def exists(self, k):
-        return k in self.elements
+        value = k.value if isinstance(k, Element) else k
+        return value in self.values
+        
 
     # If n and k are coprime, then the element k generates Zn
     def isGeneratedBy(self, k, convertMod=False):

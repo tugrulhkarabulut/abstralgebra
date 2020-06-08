@@ -14,6 +14,11 @@ def find_primes_up_to(n):
         # discarding the elements that are multiples of that element
         # since they are not prime
         primes.append(N[0])
-        divisible_by_ = divisible_by(N[0])
-        N = [k for k in N if divisible_by_(k) is False]
+        N_0 = N[0]
+        newN = N.copy()
+        for el in range(0, len(N), N_0):
+            newN.pop(el-el//N_0)
+
+        N = newN
+
     return primes

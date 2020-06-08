@@ -8,19 +8,9 @@ from .Group import Group
 
 
 class Zn_coprime(Group):
-    eye = 1
-
     def __init__(self, n):
         self.n = n
-
-    @property
-    def elements(self):
-        elements = []
-        for i in range(self.n):
-            if gcd(self.n, i) == 1:
-                elements.append(i)
-
-        return elements
+        super().__init__(elements=list(filter(lambda x: gcd(self.n, x) == 1, list(range(self.n)))), eye=1)
 
     def mod(self, k):
         return k % self.n
