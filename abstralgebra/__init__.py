@@ -5,6 +5,7 @@ from .Group import Group
 from .Zn import Zn
 from .Zn_coprime import Zn_coprime
 from .Klein4 import Klein4
+from .Sn import Sn
 from .Element import Element
 from .order import O
 
@@ -17,5 +18,6 @@ from is_prime import is_prime
 from find_primes_up_to import find_primes_up_to
 from prime_factorization import prime_factorization
 from phi import phi
+from permutation import permute_n, permute
 
 __all__ = ['Group', 'Zn']

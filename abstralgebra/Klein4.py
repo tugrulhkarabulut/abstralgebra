@@ -26,7 +26,7 @@ class Klein4(Group):
         if y == self.eye:
             return x
 
-        others = filter(lambda a: a != x and a !=y, self.elements)
+        others = filter(lambda a: a != x and a != y, self.elements)
         return list(others)[0]
 
     def __repr__(self):

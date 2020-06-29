@@ -13,9 +13,11 @@ class Element:
     """
 
     def __mul__(self, other):
+        if type(self) != type(other):
+            raise ValueError('Two operands\' type must be the same')
         if isinstance(other, Element):
             other = other.value
-        return Element(self.group.op(self.value, other), self.group)
+        return type(self)(self.group.op(self.value, other), self.group)
     
     def __imul__(self, other):
         if isinstance(other, Element):

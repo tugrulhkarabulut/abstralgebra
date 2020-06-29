@@ -14,18 +14,16 @@ def prime_factorization(n):
         [ (2, 2), (3, 1), (5, 1)].
         If the number is prime, say 11, the function will return [ (11, 1) ]
     """
-    
-    primes_up_to_n_2 = find_primes_up_to(floor(n/2))
+    if n < 2:
+        raise ValueError('{} cannot be uniquely factored.'.format(n))
+
 
     factorization = []
-    current_num = 1
-    for p in primes_up_to_n_2:
-        if current_num >= n:
-            break
-        
-        if n % p == 0:
-            factor = (p, log_simple(n, p))
-            current_num *= factor[0] ** factor[1]
+    current_num = n
+    for num in range(2, floor(n/2) + 1):
+        if current_num % num == 0:
+            current_num, power = log_simple(current_num, num)
+            factor = (num, power)
             factorization.append(factor)
     
     if len(factorization) == 0:
@@ -38,9 +36,8 @@ def log_simple(n, k):
         For example 28 = 2 * 2 * 7, so log_simple(28, 2) will return 2
         and log_simple(28, 7) will return 1
     """
-
     log_result = 0
     while (n % k == 0):
         log_result += 1
         n /= k
-    return log_result
+    return n, log_result

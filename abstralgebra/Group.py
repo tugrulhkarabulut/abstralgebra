@@ -2,7 +2,13 @@ from .Element import Element
 
 class Group():
     def __init__(self, elements=None, eye=None, op=None):
-        self.elements_ = list(map(lambda el: Element(el, self), elements))
+        if len(elements) == 0:
+            raise ValueError('Elements are empty.')
+        if isinstance(elements[0], Element):
+            self.elements_ = elements
+        else:
+            self.elements_ = list(map(lambda el: Element(el, self), elements))
+
         self.eye_ = eye
         self.op_ = op
 
